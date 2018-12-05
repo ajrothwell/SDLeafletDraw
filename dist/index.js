@@ -14,5 +14,6 @@ var _Event2 = _interopRequireDefault(_Event);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+console.log('test link to sdleafletdraw');
 _leaflet2.default.Control.Draw = _Control2.default;
 _leaflet2.default.Draw = { Event: _Event2.default };
