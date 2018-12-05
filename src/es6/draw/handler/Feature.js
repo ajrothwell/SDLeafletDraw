@@ -31,6 +31,7 @@ class BaseFeature extends L.Handler {
     super.enable();
     this.fire('enabled', { handler: this.type });
 
+    // L.DomUtil.disableClickPropagation();
     this._map.fire(Event.DRAWSTART, { layerType: this.type });
   }
 
@@ -40,6 +41,7 @@ class BaseFeature extends L.Handler {
 
     super.disable();
 
+    // L.DomUtil.enableClickPropagation();
     this._map.fire(Event.DRAWSTOP, { layerType: this.type });
 
     this.fire('disabled', { handler: this.type });
@@ -48,6 +50,7 @@ class BaseFeature extends L.Handler {
   /** Adds event listeners to this handler */
   addHooks(): void {
     if (this._map) {
+      L.DomUtil.disableClickPropagation();
       L.DomUtil.disableTextSelection();
 
       this._map.getContainer().focus();
@@ -61,6 +64,7 @@ class BaseFeature extends L.Handler {
   /** Removes event listeners from this handler */
   removeHooks(): void {
     if (this._map) {
+      L.DomUtil.enableClickPropagation();
       L.DomUtil.enableTextSelection();
 
       this._tooltip.dispose();
